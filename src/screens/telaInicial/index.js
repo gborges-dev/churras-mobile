@@ -5,6 +5,9 @@ const TelaInicial = ({ navigation }) => {
   const handlePress = () => {
     navigation.navigate('Form');
   };
+  const handlePressHist = () => {
+    navigation.navigate('Historico');
+  };
 
   return (
     <View style={styles.container}>
@@ -12,6 +15,9 @@ const TelaInicial = ({ navigation }) => {
       <Text style={styles.subtitle}>O aplicativo perfeito para seus churrascos!</Text>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Entrar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonHistorico} onPress={handlePressHist}>
+        <Text style={styles.buttonText}>Histórico</Text>
       </TouchableOpacity>
     </View>
   );
@@ -40,6 +46,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 25,
+  },
+  buttonHistorico: {
+    backgroundColor: '#FF6F00',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 25,
+    marginTop: 15
   },
   buttonText: {
     fontSize: 16,

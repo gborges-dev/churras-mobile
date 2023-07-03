@@ -5,6 +5,7 @@ import TelaInicial from "../screens/telaInicial";
 import Formulario from "../screens/form";
 import Result from "../screens/result";
 import FormsQtdComida from "../screens/form/qtdDeComida";
+import Historico from "../screens/historico";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,10 @@ const AppNav = () => {
                 <Stack.Screen
                     name="Result"
                     component={Result}    
+                />
+                <Stack.Screen
+                    name="Historico"
+                    component={Historico}    
                 />
             </Stack.Navigator>
         </NavigationContainer>

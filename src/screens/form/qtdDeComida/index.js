@@ -14,16 +14,6 @@ const FormsQtdComida = ({route, navigation}) => {
     const [refrigeranteCrianca, setRefrigeranteCrianca] = useState('400');
   
     const handleCalcular = () => {
-        AsyncStorage.setItem('qtdCarneHomem', carneHomem);
-        AsyncStorage.setItem('qtdCarnemulher', carneMulher);
-        AsyncStorage.setItem('qtdCarneCriancas', carneCrianca);
-        AsyncStorage.setItem('qtdLinguica', linguica);
-        AsyncStorage.setItem('qtdCervejaHomem', cervejaHomem);
-        AsyncStorage.setItem('qtdCervejaMulher', cervejaMulher);
-        AsyncStorage.setItem('qtdRefrigeranteHomem', refrigeranteHomem);
-        AsyncStorage.setItem('qtdRefrigeranteMulher', refrigeranteMulher);
-        AsyncStorage.setItem('qtdRefrigeranteCriança', refrigeranteCrianca);
-
         const qtdHomens = parseInt(route.params.homens),
               qtdMulheres = parseInt(route.params.mulheres),
               qtdCriancas = parseInt(route.params.criancas),
@@ -34,23 +24,19 @@ const FormsQtdComida = ({route, navigation}) => {
         let qtdFinalCerveja = (qtdHomens + qtdMulheres) * (parseInt(cervejaHomem) + parseInt(cervejaMulher));
         let qtdFinalRefrigerante = qtdTotalPessoas * (parseInt(refrigeranteHomem) + parseInt(refrigeranteMulher) + parseInt(refrigeranteCrianca));
 
-        console.log('Pessoas: ' + qtdTotalPessoas);
-        console.log('Carnes: ' + qtdFinalCarne);
-        console.log('Linguiça: ' + qtdFinalLinguica);
-        console.log('Cerveja: ' + qtdFinalCerveja);
-        console.log('Refrigerante: ' + qtdFinalRefrigerante);
+        AsyncStorage.setItem('qtdPessoas', String(qtdTotalPessoas));
+        AsyncStorage.setItem('qtdFinalCarne', String(qtdFinalCarne));
+        AsyncStorage.setItem('qtdFinalLinguica', String(qtdFinalLinguica));
+        AsyncStorage.setItem('qtdFinalCerveja', String(qtdFinalCerveja));
+        AsyncStorage.setItem('qtdFinalRefrigerante', String(qtdFinalRefrigerante));
 
-    //  navigation.navigate('ResultScreen', {
-    //     carneHomem,
-    //     carneMulher,
-    //     carneCrianca,
-    //     linguica,
-    //     cervejaHomem,
-    //     cervejaMulher,
-    //     refrigeranteHomem,
-    //     refrigeranteMulher,
-    //     refrigeranteCrianca,
-    //   });
+     navigation.navigate('Result', {
+        qtdTotalPessoas,
+        qtdFinalCarne,
+        qtdFinalLinguica,
+        qtdFinalCerveja,
+        qtdFinalRefrigerante
+      });
     };
   
     return (
